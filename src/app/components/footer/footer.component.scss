@@ -1,4 +1,51 @@
+.footer {
+  height: 80px;
+  background-color: #272727;
+  opacity: 0.7;
+}
+
 .container .row {
+  height: 80px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 375px) {
+    width: 375px;
+  }
+  @media (min-width: 768px) {
+    padding: 0 32px;
+    width: 768px;
+  }
+  @media (min-width: 1200px) {
+    padding: 0 40px;
+    width: 1200px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.icon {
+  color: red;
+}
+
+.col {
+  color: white;
+}
+
+.link {
+  color: white;
+}
+
+.link-title {
+  color: white;
+  margin-bottom: 5px;
 }
