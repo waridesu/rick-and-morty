@@ -33,10 +33,6 @@
   flex: 1;
 }
 
-.icon {
-  color: red;
-}
-
 .col {
   color: white;
 }
@@ -48,4 +44,8 @@
 .link-title {
   color: white;
   margin-bottom: 5px;
+}
+.developers-links {
+  display: flex;
+  justify-content: space-around;
 }

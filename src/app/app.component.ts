@@ -4,6 +4,7 @@ import { NgSwitch, NgSwitchDefault, NgSwitchCase } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,9 @@ import { MatIconModule } from '@angular/material/icon';
     HeaderComponent,
     FooterComponent,
     MatIconModule,
+    HttpClientModule,
   ],
+  // also we can do it here providers: [ReceivingAssetsIconService],
 })
 export class AppComponent {
   title = 'rick-and-morty';

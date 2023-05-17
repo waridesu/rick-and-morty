@@ -4,19 +4,10 @@
       <div class="col">© 2023 Рік і Морті Авантюра. Усі права захищені.</div>
       <div>
         <p class="link-title">Developers Github</p>
-        <div>
-          <a href="https://github.com/waridesu" target="_blank" class="link"
-            >link <mat-icon svgIcon="github" class="icon"></mat-icon
-          ></a>
-          <a href="https://github.com/waridesu" target="_blank" class="link"
-            >link <mat-icon svgIcon="github" class="icon"></mat-icon
-          ></a>
-          <a
-            href="https://github.com/AntoninaHoncharenko"
-            target="_blank"
-            class="link"
-            >link <mat-icon svgIcon="github" class="icon"></mat-icon
-          ></a>
+        <div class="developers-links">
+          <a href="https://github.com/waridesu" target="_blank" class="link" [innerHtml]="githubIcon | async"></a>
+          <a href="https://github.com/waridesu" target="_blank" class="link" [innerHtml]="githubIcon | async"></a>
+          <a href="https://github.com/AntoninaHoncharenko" target="_blank" class="link" [innerHtml]="githubIcon | async"></a>
         </div>
       </div>
     </div>
