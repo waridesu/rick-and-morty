@@ -13,4 +13,14 @@ export class CharacterService {
       params,
     });
   }
+
+  getCharactersById(id: string) {
+    return this.httpClient.get(
+      environment.baseURL + environment.character + id
+    );
+  }
+
+  getByUrl(url: string) {
+    return this.httpClient.get(url);
+  }
 }

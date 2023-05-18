@@ -1,6 +1,10 @@
 <section class="container">
   <ul class="box">
-    <li class="card" *ngFor="let c of character">
+    <li
+      class="card"
+      *ngFor="let c of character"
+      routerLink="/character-detail/{{ c.id }}"
+    >
       <div class="card_blok">
         <img class="card_image" [src]="c.image" />
         <p>Name:</p>

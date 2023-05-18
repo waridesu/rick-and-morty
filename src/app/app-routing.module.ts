@@ -9,6 +9,14 @@ const routes: Routes = [
         (m) => m.CharacterComponent
       ),
   },
+
+  {
+    path: 'character-detail/:id',
+    loadComponent: () =>
+      import(
+        './components/character/character-detail/character-detail.component'
+      ).then((m) => m.CharacterDetailComponent),
+  },
   {
     path: 'locations',
     loadComponent: () =>
