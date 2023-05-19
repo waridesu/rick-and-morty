@@ -1,17 +1,26 @@
-<section class="container">
-  <ul class="box">
-    <li
-      class="card"
-      *ngFor="let c of character"
-      routerLink="/character-detail/{{ c.id }}"
-    >
-      <div class="card_blok">
-        <img class="card_image" [src]="c.image" />
-        <p>Name:</p>
-        <h3 class="card_name">{{ c.name }}</h3>
-        <p>Status:</p>
-        <p class="card_info">{{ c.status }}</p>
+<div class="residents-wrap">
+  <ul
+    class="residents-list"
+    *ngFor="let c of character"
+    (window:scroll)="onScroll()"
+  >
+    <li class="residents-item" routerLink="/character-detail/{{ c.id }}">
+      <img [src]="c.image" alt="resident" class="resident-img" />
+      <div class="info-wrap">
+        <ul class="info-list">
+          <li class="info-item">
+            <p class="info-title">Name:</p>
+            <p class="info-text">{{ c.name }}</p>
+          </li>
+          <li class="info-item">
+            <p class="info-title">Status:</p>
+            <p class="info-text">{{ c.status }}</p>
+          </li>
+        </ul>
       </div>
     </li>
   </ul>
-</section>
+  <button type="button" *ngIf="loading" class="resident-btn">
+    add to favorite
+  </button>
+</div>

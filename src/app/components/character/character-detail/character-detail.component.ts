@@ -17,6 +17,9 @@ export class CharacterDetailComponent implements OnInit {
   characterId: string = '';
   character = null as any;
   episodes: any[] = [];
+  loading = false; // Flag to track if new data is being loaded
+  page = 1;
+
   constructor(
     private actRoute: ActivatedRoute,
     private httpCharacter: CharacterService
@@ -24,6 +27,7 @@ export class CharacterDetailComponent implements OnInit {
     this.characterId = this.actRoute.snapshot.paramMap.get('id') as string;
     console.log(this.characterId);
   }
+
   ngOnInit() {}
 
   ngAfterViewInit() {
@@ -34,21 +38,21 @@ export class CharacterDetailComponent implements OnInit {
     this.httpCharacter.getCharactersById(this.characterId).subscribe({
       next: (res: any) => {
         this.character = res;
-        // this.getEpisodes();
+        this.getEpisodes();
       },
       error: (error: any) => {},
     });
   }
 
-//   getEpisodes() {
-//     for (let url of this.character.episode) {
-//       this.httpCharacter.getByUrl(url).subscribe({
-//         next: (res: any) => {
-//           console.log(res);
-//           this.episodes.push(res);
-//         },
-//         error: (error: any) => {},
-//       });
-//     }
-//   }
+  getEpisodes() {
+    for (let url of this.character.episode) {
+      this.httpCharacter.getByUrl(url).subscribe({
+        next: (res: any) => {
+          console.log(res);
+          this.episodes.push(res);
+        },
+        error: (error: any) => {},
+      });
+    }
+  }
 }

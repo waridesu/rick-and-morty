@@ -1,64 +1,34 @@
-.container {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 16px;
-
-  @media (min-width: 375px) {
-    width: 375px;
-  }
-  @media (min-width: 768px) {
-    padding: 0 32px;
-    width: 768px;
-  }
-  @media (min-width: 1200px) {
-    padding: 0 40px;
-    width: 1200px;
-  }
-}
-
-.card {
-  margin: 10px;
-  cursor: pointer;
-  align-self: stretch;
-  width: 180px;
-  list-style: none;
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),
-    0px 2px 4px rgba(0, 0, 0, 0.14);
-  border-radius: 10px;
-  background: #87f54e;
-}
-.card_image {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-}
-
-.card_name {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 30px;
-  letter-spacing: 0.15px;
-
-  color: rgba(0, 0, 0, 0.87);
-  margin-left: 10px;
-  margin-top: 10px;
-}
-
-.card_info {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: 0.25px;
-  color: rgba(0, 0, 0, 0.6);
-  margin-left: 10px;
-  padding-bottom: 20px;
-}
-
-.box {
+.residents-wrap {
+  margin-top: 70px;
   display: flex;
   flex-wrap: wrap;
+  gap: 5px;
+}
+
+.residents-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.residents-list {
+  // width: 780px;
+  display: flex;
+
+  margin: 0 auto;
+}
+
+.residents-item {
+  width: 240px;
+  border-radius: 28px;
+  background-color: #87f54e;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px 5px rgba(135, 245, 78, 0.5);
+}
+
+.resident-img {
+  width: 100%;
+  height: 240px;
 }

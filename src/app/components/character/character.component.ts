@@ -16,12 +16,35 @@ import { SharedModule } from '../../shared/shared.module';
 export class CharacterComponent implements OnInit {
   character: any[] = [];
   params = {} as any;
+  loading = false;
+  page = 1;
 
   constructor(private httpCharacter: CharacterService) {}
 
   ngOnInit() {
     this.params.page = 0;
     this.getCharacters();
+    this.loadMoreData();
+  }
+
+  onScroll() {
+    const scrollPosition = window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    if (scrollPosition + windowHeight >= documentHeight && !this.loading) {
+      this.loadMoreData();
+    }
+  }
+
+  loadMoreData() {
+    this.loading = true;
+
+    this.httpCharacter.getCharacters(this.page).subscribe((res: any) => {
+      this.character = this.character.concat(...res.results); 
+      this.page++; 
+      this.loading = false; 
+    });
   }
 
   getCharacters(event?: any) {
@@ -30,8 +53,6 @@ export class CharacterComponent implements OnInit {
     this.httpCharacter.getCharacters(this.params).subscribe({
       next: (res: any) => {
         this.character.push(...res.results);
-        // console.log(res.results);
-        console.log(this.character);
       },
       error: (error: any) => {},
     });
