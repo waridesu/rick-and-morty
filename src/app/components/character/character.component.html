@@ -15,3 +15,20 @@
     </li>
   </ul>
 </section>
+
+<section class="random-character">
+  <h2>Random Character</h2>
+  <div
+    class="card"
+    *ngIf="randomCharacter$ | async as person"
+    routerLink="/character-detail/{{ person.id }}"
+  >
+    <div class="card_blok">
+      <img class="card_image" [src]="person.image" />
+      <p>Name:</p>
+      <h3 class="card_name">{{ person.name }}</h3>
+      <p>Status:</p>
+      <p class="card_info">{{ person.status }}</p>
+    </div>
+  </div>
+</section>

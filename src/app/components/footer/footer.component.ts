@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { ReceivingAssetsIconService } from '../../services/receiving-assets-icon.service';
+import { ReceivingAssetsIconService } from '../../services/api/receiving-assets-icon.service';
 import { Observable } from 'rxjs';
 import { SafeHtml } from '@angular/platform-browser';
 
