@@ -1,1 +1,17 @@
-<p>character works!</p>
+<section class="container">
+  <ul class="box">
+    <li
+      class="card"
+      *ngFor="let c of character"
+      routerLink="/character-detail/{{ c.id }}"
+    >
+      <div class="card_blok">
+        <img class="card_image" [src]="c.image" />
+        <p>Name:</p>
+        <h3 class="card_name">{{ c.name }}</h3>
+        <p>Status:</p>
+        <p class="card_info">{{ c.status }}</p>
+      </div>
+    </li>
+  </ul>
+</section>

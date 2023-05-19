@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-episode',
   standalone: true,
@@ -9,5 +10,6 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./episode.component.scss']
 })
 export class EpisodeComponent {
+
 
 }
