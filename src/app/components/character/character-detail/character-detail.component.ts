@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { SharedModule } from 'src/app/shared/shared.module';
 
-import { CharacterService } from '../../../services/character.service';
+import { CharacterService } from '../../../services/api/character.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, SharedModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './character-detail.component.html',
   styleUrls: ['./character-detail.component.scss'],
 })
@@ -40,7 +39,7 @@ export class CharacterDetailComponent implements OnInit {
         this.character = res;
         this.getEpisodes();
       },
-      error: (error: any) => {},
+      error: () => {},
     });
   }
 

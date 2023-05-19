@@ -1,10 +1,10 @@
-<section class="section">
+<section class="section" *ngIf="randomLocation$ | async as location">
   <div class="container">
-    <img src="../../../assets//planet.png" alt="planet" class="location-img" />
+    <img src="../../../assets/planet.png" alt="planet" class="location-img" />
     <div class="wrap">
       <div class="location-wrap">
         <img
-          src="../../../assets//planet-location.png"
+          src="../../../assets/planet-location.png"
           alt="planet"
           class="planet-img"
         />
@@ -15,23 +15,23 @@
           </li>
           <li class="location-item">
             <p class="location-title">Type:</p>
-            <p class="location-text">Planet</p>
+            <p class="location-text">{{ location.type }}</p>
           </li>
           <li class="location-item">
             <p class="location-title">Dimension:</p>
-            <p class="location-text">Dimension C-137</p>
+            <p class="location-text">{{ location.dimension }}</p>
           </li>
         </ul>
         <button type="button" class="location-btn">add to favorite</button>
       </div>
       <button type="button" class="generate-btn">generate location</button>
     </div>
-    <div class="residents-wrap">
+    <div class="residents-wrap" *ngIf="location.residents.length && isCharacterArray(location.residents); else hasNoResident">
       <p class="residents-title">Residents</p>
       <ul class="residents-list">
-        <li class="residents-item">
+        <li *ngFor="let resident of location.residents" class="residents-item">
           <img
-            src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+            [src]="resident.image"
             alt="resident"
             class="resident-img"
           />
@@ -39,51 +39,11 @@
             <ul class="info-list">
               <li class="info-item">
                 <p class="info-title">Name:</p>
-                <p class="info-text">Rick Sanchez</p>
+                <p class="info-text">{{ resident.name }}</p>
               </li>
               <li class="info-item">
                 <p class="info-title">Status:</p>
-                <p class="info-text">Alive</p>
-              </li>
-            </ul>
-            <button type="button" class="resident-btn">add to favorite</button>
-          </div>
-        </li>
-        <li class="residents-item">
-          <img
-            src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-            alt="resident"
-            class="resident-img"
-          />
-          <div class="info-wrap">
-            <ul class="info-list">
-              <li class="info-item">
-                <p class="info-title">Name:</p>
-                <p class="info-text">Rick Sanchez</p>
-              </li>
-              <li class="info-item">
-                <p class="info-title">Status:</p>
-                <p class="info-text">Alive</p>
-              </li>
-            </ul>
-            <button type="button" class="resident-btn">add to favorite</button>
-          </div>
-        </li>
-        <li class="residents-item">
-          <img
-            src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-            alt="resident"
-            class="resident-img"
-          />
-          <div class="info-wrap">
-            <ul class="info-list">
-              <li class="info-item">
-                <p class="info-title">Name:</p>
-                <p class="info-text">Rick Sanchez</p>
-              </li>
-              <li class="info-item">
-                <p class="info-title">Status:</p>
-                <p class="info-text">Alive</p>
+                <p class="info-text">{{ resident.status }}</p>
               </li>
             </ul>
             <button type="button" class="resident-btn">add to favorite</button>
@@ -91,5 +51,10 @@
         </li>
       </ul>
     </div>
+    <ng-template #hasNoResident>
+      <div class="residents-wrap">
+        <p class="residents-title">No residents</p>
+      </div>
+    </ng-template>
   </div>
 </section>

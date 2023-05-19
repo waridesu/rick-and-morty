@@ -1,1 +1,12 @@
-<p>episode works!</p>
+<div *ngIf="randomEpisode$ | async as episode" class="episodes">
+  <div>{{ episode.episode }}</div>
+  <div>{{ episode.name }}</div>
+  <div>{{ episode.episode }}</div>
+
+  <div *ngIf="isCharacterArray(episode.characters)" class="character-list" >
+    <div>List of characters</div>
+    <div *ngFor="let char of episode.characters">
+      <p>{{ char.name }}</p>
+    </div>
+  </div>
+</div>

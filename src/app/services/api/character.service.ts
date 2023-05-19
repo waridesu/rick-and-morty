@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environment/environment';
+import { randomNumber } from "../../helpers/randomNumber";
+import { Observable } from "rxjs";
+import { Character } from "../../interface/character";
 
 @Injectable({
   providedIn: 'root',
@@ -19,5 +22,11 @@ export class CharacterService {
 
   getByUrl(url: string) {
     return this.httpClient.get(url);
+  }
+
+  getRandomCharacter(): Observable<Character> {
+    return this.httpClient.get<Character>(
+      environment.baseURL + environment.character + randomNumber(826)
+    );
   }
 }

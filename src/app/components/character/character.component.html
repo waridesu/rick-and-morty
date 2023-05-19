@@ -1,20 +1,21 @@
 <div class="residents-wrap">
   <ul
     class="residents-list"
-    *ngFor="let c of character"
+  
     (window:scroll)="onScroll()"
   >
-    <li class="residents-item" routerLink="/character-detail/{{ c.id }}">
-      <img [src]="c.image" alt="resident" class="resident-img" />
+    <li class="residents-item"   *ngIf="randomCharacter$ | async as person"
+    routerLink="/character-detail/{{ person.id }}">
+      <img [src]="person.image" alt="resident" class="resident-img" />
       <div class="info-wrap">
         <ul class="info-list">
           <li class="info-item">
             <p class="info-title">Name:</p>
-            <p class="info-text">{{ c.name }}</p>
+            <p class="info-text">{{ person.name }}</p>
           </li>
           <li class="info-item">
             <p class="info-title">Status:</p>
-            <p class="info-text">{{ c.status }}</p>
+            <p class="info-text">{{ person.status }}</p>
           </li>
         </ul>
       </div>
