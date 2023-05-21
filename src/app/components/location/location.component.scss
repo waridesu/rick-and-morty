@@ -98,8 +98,8 @@
 }
 
 .generate-btn {
-  width: 200px;
-  height: 60px;
+  width: 230px;
+  height: 70px;
   padding: 4px;
   border: 2px solid #11b0c8;
   background-color: rgba(17, 176, 200, 0.3);
@@ -140,6 +140,7 @@
 
 .residents-item {
   width: 240px;
+  height: 470px;
   border-radius: 28px;
   background-color: #87f54e;
   overflow: hidden;
@@ -152,11 +153,11 @@
 }
 
 .info-wrap {
+  height: 225px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 16px;
-}
-
-.info-list {
-  margin-bottom: 16px;
 }
 
 .info-item:first-child {

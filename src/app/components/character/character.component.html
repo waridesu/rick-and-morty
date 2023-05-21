@@ -1,27 +1,48 @@
-<div class="residents-wrap">
-  <ul
-    class="residents-list"
-  
-    (window:scroll)="onScroll()"
+<section class="random-character">
+  <button type="button" class="generate-btn">generate character</button>
+  <div
+    class="card"
+    *ngIf="randomCharacter$ | async as person"
+    routerLink="/character-detail/{{ person.id }}"
   >
-    <li class="residents-item"   *ngIf="randomCharacter$ | async as person"
-    routerLink="/character-detail/{{ person.id }}">
-      <img [src]="person.image" alt="resident" class="resident-img" />
-      <div class="info-wrap">
-        <ul class="info-list">
+    <img class="card_image" [src]="person.image" />
+    <div class="wrap">
+      <div class="card-info">
+        <h3 class="card_name">{{ person.name }}</h3>
+        <ul>
           <li class="info-item">
-            <p class="info-title">Name:</p>
-            <p class="info-text">{{ person.name }}</p>
+            <p class="info-title">
+              Status: <span class="info-text">{{ person.status }}</span>
+            </p>
           </li>
           <li class="info-item">
-            <p class="info-title">Status:</p>
-            <p class="info-text">{{ person.status }}</p>
+            <p class="info-title">
+              Species: <span class="info-text">{{ person.species }}</span>
+            </p>
+          </li>
+          <li class="info-item">
+            <p class="info-title">
+              Type: <span class="info-text">{{ person.type }}</span>
+            </p>
+          </li>
+          <li class="info-item">
+            <p class="info-title">
+              Gender: <span class="info-text">{{ person.gender }}</span>
+            </p>
+          </li>
+          <li class="info-item">
+            <p class="info-title">
+              Origin: <span class="info-text">{{ person.origin.name }}</span>
+            </p>
           </li>
         </ul>
       </div>
-    </li>
-  </ul>
-  <button type="button" *ngIf="loading" class="resident-btn">
-    add to favorite
-  </button>
-</div>
+      <button type="button" class="character-btn">add to favorite</button>
+    </div>
+    <img
+      src="../../../assets//planet-character.png"
+      alt="planet"
+      class="planet-img"
+    />
+  </div>
+</section>
