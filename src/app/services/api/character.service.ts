@@ -10,11 +10,8 @@ import { Character } from "../../interface/character";
 })
 export class CharacterService {
   constructor(private httpClient: HttpClient) {}
-
   getCharacters(params: any) {
-    return this.httpClient.get(environment.baseURL + environment.character, {
-      params,
-    });
+    return this.httpClient.get(environment.baseURL + environment.character, {params});
   }
 
   getCharactersById(id: string) {

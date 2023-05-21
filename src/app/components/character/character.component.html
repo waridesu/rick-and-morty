@@ -1,34 +1,27 @@
-<section class="container">
-  <ul class="box">
-    <li
-      class="card"
-      *ngFor="let c of character"
-      routerLink="/character-detail/{{ c.id }}"
-    >
-      <div class="card_blok">
-        <img class="card_image" [src]="c.image" />
-        <p>Name:</p>
-        <h3 class="card_name">{{ c.name }}</h3>
-        <p>Status:</p>
-        <p class="card_info">{{ c.status }}</p>
+<div class="residents-wrap">
+  <ul
+    class="residents-list"
+  
+    (window:scroll)="onScroll()"
+  >
+    <li class="residents-item"   *ngIf="randomCharacter$ | async as person"
+    routerLink="/character-detail/{{ person.id }}">
+      <img [src]="person.image" alt="resident" class="resident-img" />
+      <div class="info-wrap">
+        <ul class="info-list">
+          <li class="info-item">
+            <p class="info-title">Name:</p>
+            <p class="info-text">{{ person.name }}</p>
+          </li>
+          <li class="info-item">
+            <p class="info-title">Status:</p>
+            <p class="info-text">{{ person.status }}</p>
+          </li>
+        </ul>
       </div>
     </li>
   </ul>
-</section>
-
-<section class="random-character">
-  <h2>Random Character</h2>
-  <div
-    class="card"
-    *ngIf="randomCharacter$ | async as person"
-    routerLink="/character-detail/{{ person.id }}"
-  >
-    <div class="card_blok">
-      <img class="card_image" [src]="person.image" />
-      <p>Name:</p>
-      <h3 class="card_name">{{ person.name }}</h3>
-      <p>Status:</p>
-      <p class="card_info">{{ person.status }}</p>
-    </div>
-  </div>
-</section>
+  <button type="button" *ngIf="loading" class="resident-btn">
+    add to favorite
+  </button>
+</div>
