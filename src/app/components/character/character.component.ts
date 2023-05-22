@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { CharacterService } from '../../services/api/character.service';
-import { RouterLink } from "@angular/router";
-import { Observable } from "rxjs";
+import { ActivatedRoute, RouterLink } from "@angular/router";
+import { map, Observable } from "rxjs";
 import { Character } from "../../interface/character";
 
 @Component({
@@ -15,14 +14,14 @@ import { Character } from "../../interface/character";
   styleUrls: ['./character.component.scss'],
 })
 export class CharacterComponent implements OnInit {
-  randomCharacter$: Observable<Character> = this.httpCharacter.getRandomCharacter();
+  randomCharacter$: Observable<Character> = this.route.data.pipe(map(data => data['character']))
 
   character: any[] = [];
   params = {} as any;
   loading = false;
   page = 1;
 
-  constructor(private httpCharacter: CharacterService) {}
+  constructor(private route: ActivatedRoute, private httpCharacter: CharacterService) {}
 
   ngOnInit() {
     this.params.page = 0;
@@ -44,9 +43,9 @@ export class CharacterComponent implements OnInit {
     this.loading = true;
 
     this.httpCharacter.getCharacters(this.page).subscribe((res: any) => {
-      this.character = this.character.concat(...res.results); 
-      this.page++; 
-      this.loading = false; 
+      this.character = this.character.concat(...res.results);
+      this.page++;
+      this.loading = false;
     });
   }
 
@@ -59,5 +58,9 @@ export class CharacterComponent implements OnInit {
       },
       error: () => {},
     });
+  }
+
+  generateCharacter(): void{
+    this.randomCharacter$ = this.httpCharacter.getRandomCharacter();
   }
 }

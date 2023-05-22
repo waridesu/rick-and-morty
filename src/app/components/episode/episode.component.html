@@ -1,7 +1,7 @@
-<section *ngIf="randomEpisode$ | async as episode" class="section">
+<section *ngIf="randomEpisode$ | async as episode; else hasNoResident" class="section">
   <div class="container">
     <div class="wrap">
-      <button type="button" class="generate-btn">generate episode</button>
+      <button type="button" class="generate-btn" (click)="generateEpisode()">generate episode</button>
       <div class="episode-wrap">
         <ul class="episode-list">
           <li class="episode-item">
@@ -35,11 +35,11 @@
         </li>
       </ul>
     </div>
-
-    <ng-template #hasNoResident>
-      <div class="character-wrap">
-        <p class="character-title">No residents</p>
-      </div>
-    </ng-template>
   </div>
+
 </section>
+<ng-template #hasNoResident>
+  <div class="character-wrap">
+    <p class="character-title">No residents</p>
+  </div>
+</ng-template>

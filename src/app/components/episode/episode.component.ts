@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Observable } from "rxjs";
-import { isStringArray } from "../../helpers/isStringArray";
+import { map, Observable } from "rxjs";
 import { EpisodeService } from "../../services/api/episode.service";
 import { Episode } from "../../interface/episodes";
 import { isCharacterArray } from "../../helpers/isCharacterArray";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-episode',
@@ -15,9 +15,12 @@ import { isCharacterArray } from "../../helpers/isCharacterArray";
   styleUrls: ['./episode.component.scss']
 })
 export class EpisodeComponent {
-  randomEpisode$: Observable<Episode> = this.episodeSVC.getRandomEpisode();
-  protected readonly isStringArray = isStringArray;
-  constructor(private episodeSVC: EpisodeService) {}
-
+  randomEpisode$: Observable<Episode> = this.route.data.pipe(map(data => data['episode']))
   protected readonly isCharacterArray = isCharacterArray;
+
+  constructor(private route: ActivatedRoute, private episodeSVC: EpisodeService) {}
+
+  generateEpisode() {
+    this.randomEpisode$ = this.episodeSVC.getRandomEpisode();
+  }
 }

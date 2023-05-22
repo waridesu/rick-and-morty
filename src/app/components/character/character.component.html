@@ -1,11 +1,11 @@
 <section class="random-character">
-  <button type="button" class="generate-btn">generate character</button>
+  <button type="button" class="generate-btn" (click)="generateCharacter()">generate character</button>
   <div
     class="card"
     *ngIf="randomCharacter$ | async as person"
     routerLink="/character-detail/{{ person.id }}"
   >
-    <img class="card_image" [src]="person.image" />
+    <img class="card_image" [src]="person.image" alt="pesson image" />
     <div class="wrap">
       <div class="card-info">
         <h3 class="card_name">{{ person.name }}</h3>
@@ -40,7 +40,7 @@
       <button type="button" class="character-btn">add to favorite</button>
     </div>
     <img
-      src="../../../assets//planet-character.png"
+      src="../../../assets/planet-character.png"
       alt="planet"
       class="planet-img"
     />

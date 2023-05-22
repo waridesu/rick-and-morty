@@ -1,3 +1,3 @@
 export function isStringArray(array: any[]): array is string[] {
-  return array.every(item => typeof item === 'string');
+  return array.length > 0 && array.every(item => typeof item === 'string');
 }
