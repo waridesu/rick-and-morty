@@ -140,11 +140,16 @@
 
 .residents-item {
   width: 240px;
-  height: 470px;
   border-radius: 28px;
   background-color: #87f54e;
   overflow: hidden;
   box-shadow: 0 0 20px 5px rgba(135, 245, 78, 0.5);
+  transition: 250ms linear;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .resident-img {
