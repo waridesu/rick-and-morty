@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NgSwitch, NgSwitchDefault, NgSwitchCase } from '@angular/common';
+import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { NgSwitch, NgSwitchDefault, NgSwitchCase, NgIf } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from "@angular/common/http";
+import { finalize } from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -20,9 +21,19 @@ import { HttpClientModule } from "@angular/common/http";
     FooterComponent,
     MatIconModule,
     HttpClientModule,
+    NgIf,
   ],
-  // also we can do it here providers: [ReceivingAssetsIconService],
 })
 export class AppComponent {
-  title = 'rick-and-morty';
+  isNavigating: boolean = false;
+
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(finalize(() => this.isNavigating = false))
+      .subscribe(event => {
+        if (event instanceof NavigationStart) this.isNavigating = true;
+        if (event instanceof NavigationEnd) this.isNavigating = false;
+      });
+  }
 }
+
