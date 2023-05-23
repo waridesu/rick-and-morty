@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { locationResolver } from "./services/resolver/location.resolver";
-import { HttpClientModule } from "@angular/common/http";
-import { characterResolver } from "./services/resolver/character.resolver";
-import { episodeResolver } from "./services/resolver/episode.resolver";
+import { locationResolver } from './services/resolver/location.resolver';
+import { HttpClientModule } from '@angular/common/http';
+import { characterResolver } from './services/resolver/character.resolver';
+import { episodeResolver } from './services/resolver/episode.resolver';
 
 const routes: Routes = [
   {
@@ -37,7 +37,6 @@ const routes: Routes = [
         (m) => m.EpisodeComponent
       ),
     resolve: { episode: episodeResolver },
-
   },
   {
     path: 'teleport',
@@ -51,6 +50,13 @@ const routes: Routes = [
     loadComponent: () =>
       import('./components/favorite/favorite.component').then(
         (m) => m.FavoriteComponent
+      ),
+  },
+  {
+    path: 'statistics',
+    loadComponent: () =>
+      import('./components/statistics/statistics.component').then(
+        (m) => m.StatisticsComponent
       ),
   },
   {
