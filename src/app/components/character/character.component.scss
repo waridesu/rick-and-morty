@@ -48,6 +48,16 @@
   width: 250px;
   top: -25%;
   right: -15%;
+
+  animation: rotate 20s linear infinite;
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 .card_image {

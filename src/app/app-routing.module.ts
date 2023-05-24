@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { locationResolver } from "./services/resolver/location.resolver";
-import { HttpClientModule } from "@angular/common/http";
-import { characterResolver } from "./services/resolver/character.resolver";
-import { episodeResolver } from "./services/resolver/episode.resolver";
+import { locationResolver } from './services/resolver/location.resolver';
+import { HttpClientModule } from '@angular/common/http';
+import { characterResolver } from './services/resolver/character.resolver';
+import { episodeResolver } from './services/resolver/episode.resolver';
 
 const routes: Routes = [
   {
@@ -15,13 +15,6 @@ const routes: Routes = [
     resolve: { character: characterResolver },
   },
 
-  {
-    path: 'character-detail/:id',
-    loadComponent: () =>
-      import(
-        './components/character/character-detail/character-detail.component'
-      ).then((m) => m.CharacterDetailComponent),
-  },
   {
     path: 'locations',
     loadComponent: () =>
@@ -37,7 +30,6 @@ const routes: Routes = [
         (m) => m.EpisodeComponent
       ),
     resolve: { episode: episodeResolver },
-
   },
   {
     path: 'teleport',
@@ -58,7 +50,6 @@ const routes: Routes = [
     loadComponent: () =>
       import('./components/home/home.component').then((m) => m.HomeComponent),
   },
-  // { path: '', redirectTo: '/characters', pathMatch: 'full' },
 ];
 
 @NgModule({
