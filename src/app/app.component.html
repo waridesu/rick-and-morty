@@ -1,11 +1,13 @@
 <app-header></app-header>
 <div class="application-content">
+  <app-rick-portal/>
+
   <ng-container *ngIf="!isNavigating">
     <router-outlet/>
   </ng-container>
 
   <ng-container *ngIf="isNavigating">
-    <div class="white-text">portal image here</div>
+    <app-rick-portal/>
   </ng-container>
 </div>
 <app-footer></app-footer>

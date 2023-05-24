@@ -6,6 +6,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from "@angular/common/http";
 import { finalize } from "rxjs";
+import { RickPortalComponent } from "./components/rick-portal/rick-portal.component";
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { finalize } from "rxjs";
     MatIconModule,
     HttpClientModule,
     NgIf,
+    RickPortalComponent,
   ],
 })
 export class AppComponent {
