@@ -1,6 +1,11 @@
 <section class="section" *ngIf="randomLocation$ | async as location">
   <div class="container">
     <img src="../../../assets/planet.png" alt="planet" class="location-img" />
+    <img
+      src="../../../assets/planet-location-mob.png"
+      alt="planet"
+      class="location-img-mob"
+    />
     <div class="wrap">
       <div class="location-wrap">
         <ul class="location-list">
@@ -19,14 +24,17 @@
         </ul>
         <button type="button" class="location-btn">add to favorite</button>
       </div>
-      <button type="button" class="generate-btn" (click)="generateLocation()">generate location</button>
+      <button type="button" class="generate-btn" (click)="generateLocation()">
+        generate location
+      </button>
     </div>
     <div
       class="residents-wrap"
       *ngIf="
         location.residents.length && isCharacterArray(location.residents);
         else hasNoResident
-      ">
+      "
+    >
       <p class="residents-title">Residents</p>
       <ul class="residents-list">
         <li *ngFor="let resident of location.residents" class="residents-item">

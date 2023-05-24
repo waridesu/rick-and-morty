@@ -1,5 +1,13 @@
 .section {
-  padding: 60px 0;
+  padding: 90px 0 30px;
+  position: relative;
+
+  @media (min-width: 768px) {
+    padding: 40px 0;
+  }
+  @media (min-width: 1200px) {
+    padding: 60px 0;
+  }
 }
 
 .container {
@@ -22,25 +30,47 @@
 
 .wrap {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 750px;
-  margin-left: 120px;
+
+  @media (max-width: 767px) {
+    flex-direction: column-reverse;
+  }
+
+  @media (min-width: 768px) {
+    width: 640px;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+  @media (min-width: 1200px) {
+    align-items: center;
+    width: 750px;
+    margin-left: 100px;
+  }
 }
 
 .generate-btn {
-  width: 230px;
-  height: 70px;
+  width: 180px;
+  height: 55px;
   padding: 4px;
   border: 2px solid #87f54e;
-  border-color: #87f54e;
   background-color: rgba(135, 245, 78, 0.3);
   box-shadow: 0 2px 55px 27px rgba(135, 245, 78, 1);
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   border-radius: 32px;
   cursor: pointer;
   transition: 250ms linear;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    margin: 250px 0 0 0;
+    width: 210px;
+    height: 70px;
+    font-size: 20px;
+  }
+  @media (min-width: 1200px) {
+    margin: 0;
+    width: 230px;
+  }
 
   &:hover {
     transform: translateY(+5%);
@@ -51,8 +81,9 @@
 }
 
 .episode-wrap {
-  width: 400px;
+  width: 340px;
   padding: 30px;
+  margin-bottom: 70px;
   border-radius: 40px;
   background-image: linear-gradient(
     rgba(236, 1, 165, 0.5) 0%,
@@ -60,37 +91,85 @@
     rgba(236, 1, 165, 0.02) 100%
   );
   box-shadow: 0px -30px 90px 40px rgba(236, 1, 165, 0.3);
-  position: relative;
+
+  @media (min-width: 768px) {
+    width: 380px;
+    margin: 0;
+  }
+  @media (min-width: 1200px) {
+    width: 400px;
+  }
 }
 
 .episode-img {
+  width: 250px;
   position: absolute;
-  width: 450px;
-  right: -150px;
-  top: 130px;
+
+  @media (max-width: 767px) {
+    top: -20px;
+    right: -70px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    width: 280px;
+    top: 10px;
+    left: -80px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 450px;
+    top: 0;
+    right: -120px;
+  }
+
+  animation: rotate 40s linear infinite;
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 .episode-list {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 30px;
+  }
 }
 
 .episode-item {
   &:not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 10px;
+    }
   }
 }
 
 .episode-title {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 600;
   color: white;
   margin-bottom: 4px;
+
+  @media (min-width: 768px) {
+    font-size: 26px;
+  }
 }
 
 .episode-text {
-  font-size: 26px;
+  font-size: 20px;
   color: white;
   margin-left: 30px;
+
+  @media (min-width: 768px) {
+    font-size: 26px;
+  }
 }
 
 .episode-btn {
@@ -102,13 +181,17 @@
   border-radius: 32px;
   background-color: transparent;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   transition: 250ms linear;
   color: white;
 
   &:hover {
     transform: translateY(+5%);
     box-shadow: inset 0 0 58px 2px rgba(236, 1, 165, 0.5);
+  }
+
+  @media (min-width: 768px) {
+    font-size: 16px;
   }
 }
 
@@ -117,19 +200,33 @@
 }
 
 .character-title {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 600;
   color: white;
   text-align: center;
   margin-bottom: 30px;
+
+  @media (min-width: 768px) {
+    font-size: 28px;
+  }
 }
 
 .character-list {
-  width: 830px;
+  width: 320px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin: 0 auto;
+
+  @media (min-width: 768px) {
+    width: 680px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: 1200px) {
+    width: 830px;
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 .character-item {
@@ -152,8 +249,12 @@
 }
 
 .character-name {
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   padding: 10px;
   color: white;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
 }

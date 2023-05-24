@@ -2,19 +2,25 @@
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  padding: 60px 0 80px;
+  padding: 80px 0 60px;
+
+  @media (min-width: 768px) {
+    padding: 40px 0 60px;
+  }
+  @media (min-width: 1200px) {
+    padding: 50px 0 80px;
+  }
 }
 
 .generate-btn {
-  width: 230px;
-  height: 70px;
+  width: 180px;
+  height: 55px;
   padding: 4px;
-  margin-bottom: 80px;
   border: 2px solid #11b0c8;
   background-color: rgba(17, 176, 200, 0.3);
   box-shadow: 0 2px 56px 17px rgba(17, 176, 200, 1);
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   border-radius: 32px;
   cursor: pointer;
   transition: 250ms linear;
@@ -25,13 +31,42 @@
     background-color: rgba(135, 245, 78, 0.3);
     box-shadow: 0 2px 55px 27px rgba(135, 245, 78, 1);
   }
+
+  @media (min-width: 768px) {
+    width: 210px;
+    height: 60px;
+    font-size: 18px;
+    margin-bottom: 60px;
+  }
+  @media (min-width: 1200px) {
+    width: 230px;
+    height: 70px;
+    font-size: 20px;
+    margin-bottom: 80px;
+  }
+}
+
+.main-btn {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.mob-btn {
+  display: block;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 }
 
 .card {
-  width: 800px;
-  height: 450px;
-  padding: 30px;
-  display: flex;
+  width: 340px;
+  height: 650px;
+  padding: 90px 10px 10px;
+
   background-image: linear-gradient(
     rgba(135, 245, 78, 0.5) 0%,
     rgba(135, 245, 78, 0.25) 50%,
@@ -39,15 +74,39 @@
   );
   box-shadow: 0px -30px 90px 40px rgba(135, 245, 78, 0.3);
   border-radius: 40px;
-
   position: relative;
+  margin-bottom: 60px;
+
+  @media (min-width: 768px) {
+    width: 600px;
+    height: 360px;
+    padding: 25px;
+    display: flex;
+    margin-bottom: 0;
+  }
+  @media (min-width: 1200px) {
+    width: 800px;
+    height: 450px;
+    padding: 30px;
+  }
 }
 
 .planet-img {
   position: absolute;
-  width: 250px;
-  top: -25%;
-  right: -15%;
+  width: 170px;
+  top: -80px;
+  right: 25%;
+
+  @media (min-width: 768px) {
+    width: 170px;
+    top: -22%;
+    right: -12%;
+  }
+  @media (min-width: 1200px) {
+    width: 250px;
+    top: -25%;
+    right: -15%;
+  }
 
   animation: rotate 20s linear infinite;
   @keyframes rotate {
@@ -61,82 +120,153 @@
 }
 
 .card_image {
-  width: 400px;
-  height: 390px;
-  margin-right: 30px;
+  width: 320px;
+  height: 250px;
   border-radius: 28px;
   border: 2px solid #160b03;
+  margin-bottom: 10px;
+
+  @media (min-width: 768px) {
+    width: 300px;
+    height: 310px;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+  @media (min-width: 1200px) {
+    width: 400px;
+    height: 390px;
+    margin-right: 30px;
+  }
 }
 
 .wrap {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 285px;
+
+  @media (min-width: 768px) {
+    height: auto;
+  }
 }
 
 .card-info {
-  width: 310px;
-  padding: 20px 40px 20px 30px;
+  width: 320px;
+  padding: 20px;
   background-color: #87f54e;
   border-radius: 28px;
   border: 1px solid #160b03;
+
+  @media (min-width: 768px) {
+    width: 230px;
+    padding: 10px 20px 10px 15px;
+  }
+  @media (min-width: 1200px) {
+    width: 310px;
+    padding: 20px 40px 20px 30px;
+  }
 }
 
 .card_name {
   font-weight: 500;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 1.2;
   letter-spacing: 0.15px;
+  text-align: center;
   color: #160b03;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-  display: inline-block;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
   position: relative;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+  @media (min-width: 1200px) {
+    font-size: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
 
   &::after {
     content: "";
     display: block;
     width: 150px;
-    height: 3px;
+    height: 2px;
     background-color: #160b03;
     border-radius: 8px;
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 65px;
+
+    @media (min-width: 768px) {
+      width: 120px;
+      left: 0;
+    }
+    @media (min-width: 1200px) {
+      height: 3px;
+      width: 150px;
+    }
   }
 }
 
 .info-item:not(:last-child) {
   margin-bottom: 4px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 3px;
+  }
+  @media (min-width: 1200px) {
+    margin-bottom: 4px;
+  }
 }
 
 .info-title {
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   color: #160b03;
+
+  @media (min-width: 1200px) {
+    font-size: 16px;
+  }
 }
 
 .info-text {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   color: #160b03;
+
+  @media (min-width: 1200px) {
+    font-size: 16px;
+  }
 }
 
 .character-btn {
-  width: 200px;
+  width: 160px;
   height: 40px;
-  display: block;
   margin: 0 auto;
   border: 1px solid #87f54e;
   border-radius: 32px;
   background-color: transparent;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   transition: 250ms linear;
   color: white;
 
   &:hover {
     transform: translateY(+5%);
     box-shadow: inset 0 0 58px 2px rgba(135, 245, 78, 0.5);
+  }
+
+  @media (min-width: 768px) {
+    width: 180px;
+    height: 40px;
+  }
+  @media (min-width: 1200px) {
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
   }
 }
