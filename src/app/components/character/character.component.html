@@ -1,11 +1,15 @@
 <div class="residents-wrap">
-  <ul
-    class="residents-list"
-  
-    (window:scroll)="onScroll()"
-  >
-    <li class="residents-item"   *ngIf="randomCharacter$ | async as person"
-    routerLink="/character-detail/{{ person.id }}">
+  <img
+    src="../../../assets/4-44144_rick-and-morty-png.png"
+    alt=""
+    class="teleport-img"
+  />
+  <ul class="residents-list" (window:scroll)="onScroll()">
+    <li
+      class="residents-item"
+      *ngIf="randomCharacter$ | async as person"
+      routerLink="/character-detail/{{ person.id }}"
+    >
       <img [src]="person.image" alt="resident" class="resident-img" />
       <div class="info-wrap">
         <ul class="info-list">
