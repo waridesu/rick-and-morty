@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  OnDestroy,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as THREE from 'three';
 
@@ -6,10 +14,11 @@ import * as THREE from 'three';
   selector: 'app-rick-portal',
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './rick-portal.component.html',
   styleUrls: ['./rick-portal.component.scss']
 })
-export class RickPortalComponent implements AfterViewInit {
+export class RickPortalComponent implements AfterViewInit, OnDestroy {
   @ViewChild('rendererContainer', {static: false}) rendererContainer: ElementRef | undefined;
 
   scene: THREE.Scene | undefined;
@@ -20,6 +29,7 @@ export class RickPortalComponent implements AfterViewInit {
   clock: THREE.Clock | undefined;
   portalParticles: THREE.Mesh[] = [];
   smokeParticles: THREE.Mesh[] = [];
+  constructor(private renderer2: Renderer2) { }
 
   ngAfterViewInit() {
     this.initScene();
@@ -47,7 +57,7 @@ export class RickPortalComponent implements AfterViewInit {
     this.renderer.setSize(500 , 500);
 
     if(this.rendererContainer) {
-      this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
+      this.renderer2.appendChild(this.rendererContainer.nativeElement, this.renderer.domElement);
     }
 
     this.particleSetup();
@@ -112,5 +122,10 @@ export class RickPortalComponent implements AfterViewInit {
       this.renderer?.render(this.scene, this.cam);
     }
     requestAnimationFrame(() => this.animate());
+  }
+  ngOnDestroy() {
+    if(this.rendererContainer) {
+      this.renderer2.removeChild(this.rendererContainer.nativeElement, this.renderer?.domElement);
+    }
   }
 }

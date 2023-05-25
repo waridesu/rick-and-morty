@@ -17,9 +17,9 @@
             <p class="location-text">{{ location.dimension }}</p>
           </li>
         </ul>
-        <button type="button" class="location-btn">add to favorite</button>
+        <button type="button" class="location-btn" (click)="addToFavorite(location, $event)">add to favorite</button>
       </div>
-      <button type="button" class="generate-btn" (click)="generateLocation()">generate location</button>
+      <button type="button" class="generate-btn" (click)="generateLocation()">Teleport</button>
     </div>
     <div
       class="residents-wrap"
@@ -29,7 +29,7 @@
       ">
       <p class="residents-title">Residents</p>
       <ul class="residents-list">
-        <li *ngFor="let resident of location.residents" class="residents-item">
+        <li *ngFor="let resident of location.residents | slice: 0 : displayLimit; trackBy: trackByFunction" class="residents-item">
           <img [src]="resident.image" alt="resident" class="resident-img" />
           <div class="info-wrap">
             <ul class="info-list">
@@ -42,10 +42,12 @@
                 <p class="info-text">{{ resident.status }}</p>
               </li>
             </ul>
-            <button type="button" class="resident-btn">add to favorite</button>
+            <button type="button" class="resident-btn" (click)="addToFavoriteResident(resident, $event)">add to favorite</button>
           </div>
         </li>
       </ul>
+      <button class="generate-btn show-more" (click)="showMore(location.residents)" *ngIf="displayLimit < location.residents.length">Show More</button>
+
     </div>
     <ng-template #hasNoResident>
       <div class="residents-wrap">

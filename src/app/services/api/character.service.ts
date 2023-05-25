@@ -2,31 +2,32 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environment/environment';
 import { randomNumber } from "../../helpers/randomNumber";
-import { Observable } from "rxjs";
+import { finalize, map, Observable, tap } from "rxjs";
 import { Character } from "../../interface/character";
+import { LoaderService } from "../loader.service";
 
 @Injectable({
   providedIn: 'root',
 })
 export class CharacterService {
-  constructor(private httpClient: HttpClient) {}
-  getCharacters(params: any) {
-    return this.httpClient.get(environment.baseURL + environment.character, {params});
+  constructor(private httpClient: HttpClient, private loaderSvc: LoaderService) {
   }
 
-  getCharactersById(id: string) {
-    return this.httpClient.get(
-      environment.baseURL + environment.character + id
-    );
-  }
-
-  getByUrl(url: string) {
-    return this.httpClient.get(url);
-  }
-
-  getRandomCharacter(): Observable<Character> {
+  getRandomCharacter(): Observable<Character | null> {
+    this.loaderSvc.isLoading = true;
     return this.httpClient.get<Character>(
       environment.baseURL + environment.character + randomNumber(826)
-    );
+    ).pipe(
+      map((data) => this.loaderSvc.isLoading ? null : data),
+      tap((data) => {
+        if (data) {
+          const stats = JSON.parse(sessionStorage.getItem('character') || '[]');
+          stats.push(data)
+          sessionStorage.setItem('character', JSON.stringify(stats));
+        }
+      }),
+      finalize(() => {
+        this.loaderSvc.isLoading = false;
+      }));
   }
 }

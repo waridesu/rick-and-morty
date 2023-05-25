@@ -1,13 +1,8 @@
 <app-header></app-header>
+
 <div class="application-content">
-  <app-rick-portal/>
-
-  <ng-container *ngIf="!isNavigating">
-    <router-outlet/>
-  </ng-container>
-
-  <ng-container *ngIf="isNavigating">
-    <app-rick-portal/>
-  </ng-container>
+  <app-rick-portal *ngIf="isLoader()"/>
+  <router-outlet/>
 </div>
+
 <app-footer></app-footer>

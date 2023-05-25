@@ -2,24 +2,37 @@ import { Injectable } from '@angular/core';
 import { environment } from "../../../environment/environment";
 import { HttpClient } from "@angular/common/http";
 import { randomNumber } from "../../helpers/randomNumber";
-import { Observable, of, switchMap } from "rxjs";
+import { finalize, map, Observable, of, switchMap, tap } from "rxjs";
 import { isStringArray } from "../../helpers/isStringArray";
 import { getResidents } from "../../helpers/getResidents";
 import { Episode } from "../../interface/episodes";
+import { LoaderService } from "../loader.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EpisodeService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private loaderSvc: LoaderService) {}
 
-  getRandomEpisode(): Observable<Episode> {
+  getRandomEpisode(): Observable<Episode | null> {
+    this.loaderSvc.isLoading = true;
     return this.httpClient.get<Episode>(
       environment.baseURL + environment.episode + randomNumber(51)
     ).pipe(
       switchMap((location) =>
-        isStringArray(location.characters) ? getResidents(location, this.httpClient) as Observable<Episode> : of(location))
+        isStringArray(location.characters) ? getResidents(location, this.httpClient) as Observable<Episode> : of(location)),
+      map((data) => this.loaderSvc.isLoading ? null: data),
+      tap((data) => {
+        if (data) {
+          const stats = JSON.parse(sessionStorage.getItem('episode') || '[]');
+          stats.push(data)
+          sessionStorage.setItem('episode', JSON.stringify(stats));
+        }
+      }),
+      finalize(()=> {
+        this.loaderSvc.isLoading = false;
+      })
     );
   }
 }
