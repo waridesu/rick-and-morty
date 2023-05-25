@@ -44,8 +44,13 @@
   }
 }
 
-.link {
-  color: white;
+.gh-icon {
+  fill: white;
+  transition: 250ms linear;
+
+  &:hover {
+    fill: #11b0c8;
+  }
 }
 
 .link-title {

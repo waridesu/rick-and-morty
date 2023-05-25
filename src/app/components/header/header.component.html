@@ -34,7 +34,77 @@
             </li>
           </ul>
         </div>
+
+        <button type="button" class="open-menu-btn" (click)="toggleMenu()">
+          <svg width="50" height="50" class="menu-icon">
+            <use href="../../../assets/sprite.svg#icon-menu"></use>
+          </svg>
+        </button>
       </div>
     </nav>
+  </div>
+
+  <!-- mob-menu -->
+  <div class="backdrop" [class.visible]="isOpenMenu">
+    <div class="mob-menu-wrap">
+      <div class="mob-menu">
+        <button type="button" class="close-btn" (click)="toggleMenu()">
+          <svg width="30" height="30" class="close-icon">
+            <use href="../../../assets/sprite.svg#icon-close"></use>
+          </svg>
+        </button>
+
+        <ul class="mob-nav-list">
+          <li class="mob-nav-item">
+            <a
+              class="mob-nav-link"
+              routerLink="/characters"
+              (click)="toggleMenu()"
+              >Characters</a
+            >
+          </li>
+          <li class="mob-nav-item">
+            <a
+              class="mob-nav-link"
+              routerLink="/locations"
+              (click)="toggleMenu()"
+              >Locations</a
+            >
+          </li>
+          <li class="mob-nav-item">
+            <a
+              class="mob-nav-link"
+              routerLink="/episodes"
+              (click)="toggleMenu()"
+              >Episodes</a
+            >
+          </li>
+          <li class="mob-nav-item">
+            <a
+              class="mob-nav-link"
+              routerLink="/teleport"
+              (click)="toggleMenu()"
+              >Teleport</a
+            >
+          </li>
+          <li class="mob-nav-item">
+            <a
+              class="mob-nav-link"
+              routerLink="/favorites"
+              (click)="toggleMenu()"
+              >Favorite</a
+            >
+          </li>
+          <li class="mob-nav-item">
+            <a
+              class="mob-nav-link"
+              routerLink="/statistics"
+              (click)="toggleMenu()"
+              >Statistics</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </header>

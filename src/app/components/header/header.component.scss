@@ -28,6 +28,7 @@
   display: flex;
   align-items: center;
 }
+
 .navbar-nav {
   display: flex;
   list-style: none;
@@ -35,15 +36,20 @@
 }
 
 .navbar-collapse {
-  width: 750px;
-  margin-left: auto;
+  display: none;
+
+  @media (min-width: 1200px) {
+    display: block;
+    width: 750px;
+    margin-left: auto;
+  }
 }
 
 .logo-img {
-  width: 100px;
+  width: 200px;
 
   @media (min-width: 768px) {
-    width: 200px;
+    width: 250px;
   }
   @media (min-width: 1200px) {
     width: 300px;
@@ -55,6 +61,124 @@
   color: #87f54e;
   padding: 10px 0;
   transition: color 250ms linear;
+
+  &:hover,
+  &:focus {
+    color: #11b0c8;
+  }
+}
+
+// mob-menu
+
+.open-menu-btn {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  margin-left: auto;
+  padding: 0;
+  border: none;
+  display: block;
+
+  @media (min-width: 1200px) {
+    display: none;
+  }
+}
+
+.menu-icon {
+  fill: #87f54e;
+  transition: 250ms linear;
+
+  &:hover,
+  &:focus {
+    fill: #11b0c8;
+  }
+}
+
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 5;
+  transition: 400ms linear;
+
+  @media (min-width: 768px) {
+    transition: 250ms linear;
+  }
+}
+
+.backdrop.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: rotate(720deg) scale(1);
+
+  @media (min-width: 768px) {
+    transform: none;
+  }
+}
+
+.mob-menu-wrap {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 100px;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-image: url(../../../assets//background-image.png);
+
+  @media (min-width: 768px) {
+    width: 50vw;
+    transform: translateX(100%);
+    transition: 250ms linear;
+  }
+  @media (min-width: 1200px) {
+    display: none;
+  }
+}
+
+.backdrop.visible .mob-menu-wrap {
+  transform: translateX(0);
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
+.close-icon {
+  fill: white;
+}
+
+.mob-nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mob-nav-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.mob-nav-link {
+  font-size: 20px;
+  padding: 20px 0;
+  color: #87f54e;
+  text-align: center;
+  transition: 250ms linear;
+
+  @media (min-width: 768px) {
+    font-size: 22px;
+  }
 
   &:hover,
   &:focus {
