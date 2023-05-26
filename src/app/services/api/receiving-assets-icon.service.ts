@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { map, Observable, share } from "rxjs";
+import { first, map, Observable, share } from "rxjs";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 
 @Injectable({
@@ -16,6 +16,6 @@ export class ReceivingAssetsIconService {
           data = data.replace('<svg', `<svg fill="${fill}"`)
         }
         return this.sanitizer.bypassSecurityTrustHtml(data)
-      }),share());
+      }),share(), first());
   }
 }

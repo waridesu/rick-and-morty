@@ -1,52 +1,52 @@
 <section class="section">
   <div class="container">
-    <h2 class="title">Characters</h2>
+    <h2 class="title" *ngIf="characters.length">Characters</h2>
     <ul class="favorite-list">
-      <li class="character-item">
+      <li class="character-item" *ngFor="let character of characters">
         <img
-          src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+          [src]="character.image"
           alt="resident"
           class="character-img"
         />
         <div class="info-wrap">
           <ul class="info-list">
-            <li class="info-item">Name: <span class="info-text">Name</span></li>
+            <li class="info-item">Name: <span class="info-text">{{character.name}}</span></li>
             <li class="info-item">
-              Status: <span class="info-text">Status</span>
+              Status: <span class="info-text">{{character.status}}</span>
             </li>
             <li class="info-item">
-              Species: <span class="info-text">Species</span>
+              Species: <span class="info-text">{{character.species}}</span>
             </li>
-            <li class="info-item">Type: <span class="info-text">Type</span></li>
+            <li class="info-item">Type: <span class="info-text">{{ character.type}}</span></li>
             <li class="info-item">
-              Gender: <span class="info-text">Gender</span>
+              Gender: <span class="info-text">{{character.gender}}</span>
             </li>
             <li class="info-item">
-              Origin: <span class="info-text">Origin</span>
+              Origin: <span class="info-text">{{character.origin.name}}</span>
             </li>
           </ul>
-          <button type="button" class="character-btn btn">
+          <button type="button" class="character-btn btn" (click)="removeCharacter(character)">
             remove from favorite
           </button>
         </div>
       </li>
     </ul>
 
-    <h2 class="title">Locations</h2>
+    <h2 class="title" *ngIf="locations.length">Locations</h2>
     <ul class="favorite-list">
-      <li class="location-wrap">
+      <li class="location-wrap" *ngFor="let location of locations">
         <ul class="location-list">
           <li class="location-item">
             <p class="location-title">Planet:</p>
-            <p class="location-text">Planet</p>
+            <p class="location-text">{{ location.name }}</p>
           </li>
           <li class="location-item">
             <p class="location-title">Type:</p>
-            <p class="location-text">Type</p>
+            <p class="location-text">{{ location.type}}</p>
           </li>
           <li class="location-item">
             <p class="location-title">Dimension:</p>
-            <p class="location-text">Dimension</p>
+            <p class="location-text">{{ location.dimension }}</p>
           </li>
         </ul>
         <button type="button" class="location-btn btn">
@@ -55,24 +55,24 @@
       </li>
     </ul>
 
-    <h2 class="title">Episodes</h2>
+    <h2 class="title" *ngIf="episodes.length">Episodes</h2>
     <ul class="favorite-list">
-      <li class="episode-wrap">
+      <li class="episode-wrap" *ngFor="let episode of episodes">
         <ul class="episode-list">
           <li class="episode-item">
             <p class="episode-title">Name:</p>
-            <p class="episode-text">Name</p>
+            <p class="episode-text">{{ episode.name }}</p>
           </li>
           <li class="episode-item">
             <p class="episode-title">Date:</p>
-            <p class="episode-text">Date</p>
+            <p class="episode-text">{{ episode.air_date }}</p>
           </li>
           <li class="episode-item">
             <p class="episode-title">Episode:</p>
-            <p class="episode-text">Episode</p>
+            <p class="episode-text">{{ episode.episode}}</p>
           </li>
         </ul>
-        <button type="button" class="episode-btn btn">
+        <button type="button" class="episode-btn btn" (click)="removeEpisode(episode)">
           remove from favorite
         </button>
       </li>

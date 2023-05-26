@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { locationResolver } from './services/resolver/location.resolver';
-import { HttpClientModule } from '@angular/common/http';
-import { characterResolver } from './services/resolver/character.resolver';
-import { episodeResolver } from './services/resolver/episode.resolver';
 
 const routes: Routes = [
   {
@@ -12,31 +8,19 @@ const routes: Routes = [
       import('./components/character/character.component').then(
         (m) => m.CharacterComponent
       ),
-    resolve: { character: characterResolver },
   },
-
   {
     path: 'locations',
     loadComponent: () =>
       import('./components/location/location.component').then(
         (m) => m.LocationComponent
       ),
-    resolve: { location: locationResolver },
   },
   {
     path: 'episodes',
     loadComponent: () =>
       import('./components/episode/episode.component').then(
-        (m) => m.EpisodeComponent
-      ),
-    resolve: { episode: episodeResolver },
-  },
-  {
-    path: 'teleport',
-    loadComponent: () =>
-      import('./components/teleport/teleport.component').then(
-        (m) => m.TeleportComponent
-      ),
+        (m) => m.EpisodeComponent)
   },
   {
     path: 'favorites',
@@ -60,7 +44,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), HttpClientModule],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
