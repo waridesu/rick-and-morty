@@ -19,10 +19,10 @@ export class LocationService {
     return this.httpClient.get<cartoonLocation>(
       environment.baseURL + environment.location + randomNumber(126)
     ).pipe(
-      map((data) => this.loaderSvc.isLoading ? null: data),
-      delay(1000),
       switchMap((location) =>
         location && isStringArray(location.residents) ? getResidents(location, this.httpClient) as Observable<cartoonLocation> : of(location)),
+      map((data) => this.loaderSvc.isLoading ? null: data),
+      delay(1000),
       tap((data) => {
         if (data) {
           const stats = JSON.parse(sessionStorage.getItem('location') || '[]');
