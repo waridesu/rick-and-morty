@@ -129,7 +129,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  background-image: url(/assets/background-image.png);
+  background-image: url("/assets/background-image.png");
 
   @media (min-width: 768px) {
     width: 50vw;
