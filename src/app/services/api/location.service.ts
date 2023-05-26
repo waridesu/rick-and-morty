@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from "../../../environment/environment";
 import { HttpClient } from "@angular/common/http";
-import { finalize, map, Observable, of, switchMap, tap } from "rxjs";
+import { delay, finalize, map, Observable, of, switchMap, tap } from "rxjs";
 import { cartoonLocation } from "../../interface/cartoonLocation";
 import { isStringArray } from "../../helpers/isStringArray";
 import { randomNumber } from "../../helpers/randomNumber";
@@ -19,6 +19,7 @@ export class LocationService {
     return this.httpClient.get<cartoonLocation>(
       environment.baseURL + environment.location + randomNumber(126)
     ).pipe(
+      delay(1000),
       switchMap((location) =>
         isStringArray(location.residents) ? getResidents(location, this.httpClient) as Observable<cartoonLocation> : of(location)),
       map((data) => this.loaderSvc.isLoading ? null: data),

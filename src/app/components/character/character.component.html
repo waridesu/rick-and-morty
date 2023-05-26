@@ -2,13 +2,11 @@
   <button
     type="button"
     class="generate-btn main-btn"
-    (click)="generateCharacter()"
-  >
+    (click)="generateCharacter()">
     Teleport
-  </button>  <div
-    class="card"
-    *ngIf="randomCharacter$ | async as person">
-    <img class="card_image" [src]="person.image" alt="pesson image" />
+  </button>
+  <div class="card">
+    <img class="card_image" [src]="person.image" alt="pesson image"/>
     <div class="wrap">
       <div class="card-info">
         <h3 class="card_name">{{ person.name }}</h3>
@@ -53,6 +51,6 @@
     class="generate-btn mob-btn"
     (click)="generateCharacter()"
   >
-Teleport
+    Teleport
   </button>
 </section>

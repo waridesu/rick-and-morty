@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environment/environment';
 import { randomNumber } from "../../helpers/randomNumber";
-import { finalize, map, Observable, tap } from "rxjs";
+import { delay, finalize, map, Observable, share, tap } from "rxjs";
 import { Character } from "../../interface/character";
 import { LoaderService } from "../loader.service";
 
@@ -18,6 +18,7 @@ export class CharacterService {
     return this.httpClient.get<Character>(
       environment.baseURL + environment.character + randomNumber(826)
     ).pipe(
+      delay(1000),
       map((data) => this.loaderSvc.isLoading ? null : data),
       tap((data) => {
         if (data) {
@@ -26,6 +27,7 @@ export class CharacterService {
           sessionStorage.setItem('character', JSON.stringify(stats));
         }
       }),
+      share(),
       finalize(() => {
         this.loaderSvc.isLoading = false;
       }));

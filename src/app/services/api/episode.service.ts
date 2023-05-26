@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from "../../../environment/environment";
 import { HttpClient } from "@angular/common/http";
 import { randomNumber } from "../../helpers/randomNumber";
-import { finalize, map, Observable, of, switchMap, tap } from "rxjs";
+import { delay, finalize, map, Observable, of, switchMap, tap } from "rxjs";
 import { isStringArray } from "../../helpers/isStringArray";
 import { getResidents } from "../../helpers/getResidents";
 import { Episode } from "../../interface/episodes";
@@ -20,6 +20,7 @@ export class EpisodeService {
     return this.httpClient.get<Episode>(
       environment.baseURL + environment.episode + randomNumber(51)
     ).pipe(
+      delay(1000),
       switchMap((location) =>
         isStringArray(location.characters) ? getResidents(location, this.httpClient) as Observable<Episode> : of(location)),
       map((data) => this.loaderSvc.isLoading ? null: data),
