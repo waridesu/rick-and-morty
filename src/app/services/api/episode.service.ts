@@ -20,10 +20,10 @@ export class EpisodeService {
     return this.httpClient.get<Episode>(
       environment.baseURL + environment.episode + randomNumber(51)
     ).pipe(
+      map((data) => this.loaderSvc.isLoading ? null: data),
       delay(1000),
       switchMap((location) =>
-        isStringArray(location.characters) ? getResidents(location, this.httpClient) as Observable<Episode> : of(location)),
-      map((data) => this.loaderSvc.isLoading ? null: data),
+        location && isStringArray(location.characters) ? getResidents(location, this.httpClient) as Observable<Episode> : of(location)),
       tap((data) => {
         if (data) {
           const stats = JSON.parse(sessionStorage.getItem('episode') || '[]');

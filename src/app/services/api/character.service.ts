@@ -18,8 +18,8 @@ export class CharacterService {
     return this.httpClient.get<Character>(
       environment.baseURL + environment.character + randomNumber(826)
     ).pipe(
-      delay(1000),
       map((data) => this.loaderSvc.isLoading ? null : data),
+      delay(1000),
       tap((data) => {
         if (data) {
           const stats = JSON.parse(sessionStorage.getItem('character') || '[]');
