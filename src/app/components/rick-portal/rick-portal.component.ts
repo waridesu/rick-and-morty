@@ -66,7 +66,7 @@ export class RickPortalComponent implements AfterViewInit, OnDestroy {
   particleSetup() {
     let loader = new THREE.TextureLoader();
 
-    loader.load("/assets/smoke.png", (texture) => {
+    loader.load("./assets/smoke.png", (texture) => {
       let portalGeo = new THREE.PlaneGeometry(350,350);
       let portalMaterial = new THREE.MeshStandardMaterial({
         map: texture,
