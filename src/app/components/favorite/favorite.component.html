@@ -1,5 +1,6 @@
 <section class="section">
   <div class="container">
+    <h2 class="title" *ngIf="!locations.length && !characters.length && !episodes.length">Please add to favorite</h2>
     <h2 class="title" *ngIf="characters.length">Characters</h2>
     <ul class="favorite-list">
       <li class="character-item" *ngFor="let character of characters">
