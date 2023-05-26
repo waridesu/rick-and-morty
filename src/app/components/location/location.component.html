@@ -1,57 +1,55 @@
-<section class="section" *ngIf="randomLocation$ | async as location">
-  <div class="container">
-    <img src="../../../assets/planet.png" alt="planet" class="location-img" />
+<section class="location" *ngIf="randomLocation$ | async as location">
+  <div class="location__container">
+    <img src="../../../assets/planet.png" alt="planet" class="location__img" />
     <img
       src="../../../assets/planet-location-mob.png"
       alt="planet"
-      class="location-img-mob"
+      class="location__img--mob"
     />
-    <div class="wrap">
-      <div class="location-wrap">
-        <ul class="location-list">
-          <li class="location-item">
-            <p class="location-title">Planet:</p>
-            <p class="location-text">{{ location.name }}</p>
-          </li>
-          <li class="location-item">
-            <p class="location-title">Type:</p>
-            <p class="location-text">{{ location.type }}</p>
-          </li>
-          <li class="location-item">
-            <p class="location-title">Dimension:</p>
-            <p class="location-text">{{ location.dimension }}</p>
-          </li>
-        </ul>
-        <button type="button" class="location-btn" (click)="addToFavorite(location, $event)">add to favorite</button>
+    <div class="location__card-container">
+      <div class="location__card">
+          <div class="location-item">
+            <p class="location__card-title">Planet:</p>
+            <p class="location__card-text">{{ location.name }}</p>
+          </div>
+          <div class="location-item">
+            <p class="location__card-title">Type:</p>
+            <p class="location__card-text">{{ location.type }}</p>
+          </div>
+          <div class="location-item">
+            <p class="location__card-title">Dimension:</p>
+            <p class="location__card-text">{{ location.dimension }}</p>
+          </div>
+        <button type="button" class="location__card-btn" (click)="addToFavorite(location, $event)">add to favorite</button>
       </div>
-      <button type="button" class="generate-btn" (click)="generateLocation()">Teleport</button>
+      <button type="button" class="location__action-btn" (click)="generateLocation()">Teleport</button>
     </div>
     <div
-      class="residents-wrap"
+      class="location__resident-cards"
       *ngIf="
         location.residents.length && isCharacterArray(location.residents);
         else hasNoResident
       ">
-      <p class="residents-title">Residents</p>
-      <ul class="residents-list">
-        <li *ngFor="let resident of location.residents | slice: 0 : displayLimit; trackBy: trackByFunction" class="residents-item">
-          <img [src]="resident.image" alt="resident" class="resident-img" />
-          <div class="info-wrap">
+      <p class="location__resident-cards-title">Residents</p>
+      <ul class="location__residents-list">
+        <li *ngFor="let resident of location.residents | slice: 0 : displayLimit; trackBy: trackByFunction" class="location__resident-card">
+          <img [src]="resident.image" alt="resident" class="location__resident-card-img" />
+          <div class="location__resident-card-info">
             <ul class="info-list">
               <li class="info-item">
-                <p class="info-title">Name:</p>
-                <p class="info-text">{{ resident.name }}</p>
+                <p class="location__resident-card-info-title">Name:</p>
+                <p class="location__resident-card-info-text">{{ resident.name }}</p>
               </li>
               <li class="info-item">
-                <p class="info-title">Status:</p>
-                <p class="info-text">{{ resident.status }}</p>
+                <p class="location__resident-card-info-title">Status:</p>
+                <p class="location__resident-card-info-text">{{ resident.status }}</p>
               </li>
             </ul>
-            <button type="button" class="resident-btn" (click)="addToFavoriteResident(resident, $event)">add to favorite</button>
+            <button type="button" class="location__resident-btn" (click)="addToFavoriteResident(resident, $event)">add to favorite</button>
           </div>
         </li>
       </ul>
-      <button class="generate-btn show-more" (click)="showMore(location.residents)" *ngIf="displayLimit < location.residents.length">Show More</button>
+      <button class="location__action-btn show-more" (click)="showMore(location.residents)" *ngIf="displayLimit < location.residents.length">Show More</button>
 
     </div>
     <ng-template #hasNoResident>
