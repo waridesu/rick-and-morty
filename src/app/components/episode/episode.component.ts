@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Renderer2 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Observable } from "rxjs";
 import { EpisodeService } from "../../services/api/episode.service";
 import { Episode } from "../../interface/episodes";
@@ -9,7 +9,7 @@ import { Character } from "../../interface/character";
 @Component({
   selector: 'app-episode',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   providers: [EpisodeService],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './episode.component.html',

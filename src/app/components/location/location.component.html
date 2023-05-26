@@ -1,11 +1,11 @@
 <section class="location" *ngIf="randomLocation$ | async as location">
   <div class="location__container">
-    <img src="./assets/planet.png" alt="planet" class="location__img" />
+    <img ngSrc="/assets/planet.png" alt="planet" class="location__img" height="708" width="564"/>
     <img
-      src="./assets/planet-location-mob.png"
+      ngSrc="/assets/planet-location-mob.png"
       alt="planet"
       class="location__img--mob"
-    />
+      height="200" width="200"/>
     <div class="location__card-container">
       <div class="location__card">
           <div class="location-item">

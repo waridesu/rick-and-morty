@@ -4,10 +4,10 @@
       <div class="container-fluid">
         <a class="navbar-brand" routerLink="">
           <img
-            src="./assets/logo-image.png"
+            ngSrc="/assets/logo-image.png"
             alt="rick-and-morty"
             class="logo-img"
-          />
+            height="151" width="557"/>
         </a>
         <!--      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,7 +34,7 @@
 
         <button type="button" class="open-menu-btn" (click)="toggleMenu()">
           <svg width="50" height="50" class="menu-icon">
-            <use href="./assets/sprite.svg#icon-menu"></use>
+            <use href="/assets/sprite.svg#icon-menu"></use>
           </svg>
         </button>
       </div>
@@ -47,7 +47,7 @@
       <div class="mob-menu">
         <button type="button" class="close-btn" (click)="toggleMenu()">
           <svg width="30" height="30" class="close-icon">
-            <use href="./assets/sprite.svg#icon-close"></use>
+            <use href="/assets/sprite.svg#icon-close"></use>
           </svg>
         </button>
 

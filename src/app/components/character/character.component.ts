@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Renderer2 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { CharacterService } from '../../services/api/character.service';
 import { RouterLink } from "@angular/router";
 import { Observable } from "rxjs";
@@ -9,7 +9,7 @@ import { RickPortalComponent } from "../rick-portal/rick-portal.component";
 @Component({
   selector: 'app-character',
   standalone: true,
-  imports: [CommonModule, RouterLink, RickPortalComponent],
+  imports: [CommonModule, RouterLink, RickPortalComponent, NgOptimizedImage],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CharacterService],
   templateUrl: './character.component.html',

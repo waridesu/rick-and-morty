@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Renderer2 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { LocationService } from '../../services/api/location.service';
 import { Observable } from 'rxjs';
 import { cartoonLocation } from '../../interface/cartoonLocation';
@@ -10,7 +10,7 @@ import { Character } from "../../interface/character";
 @Component({
   selector: 'app-location',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgOptimizedImage],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [LocationService],
   templateUrl: './location.component.html',

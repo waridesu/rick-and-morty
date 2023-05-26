@@ -256,8 +256,9 @@ $color-shadow-secondary: rgba(135, 245, 78, 0.5);
     }
 
     &-info {
-      height: 200px;
+      min-height: 200px;
       display: flex;
+      flex-grow: 1;
       flex-direction: column;
       justify-content: space-between;
       padding: 16px;
@@ -265,7 +266,9 @@ $color-shadow-secondary: rgba(135, 245, 78, 0.5);
       &-title, &-text {
         font-size: $font-size-medium;
         color: $color-black;
+      }
 
+      &-title {
         @media (min-width: 768px) {
           font-size: $font-size-large;
         }
