@@ -1,5 +1,7 @@
 <section class="random-character">
-  <button type="button" class="generate-btn" (click)="generateCharacter()">generate character</button>
+  <button type="button" class="generate-btn" (click)="generateCharacter()">
+    generate character
+  </button>
   <div
     class="card"
     *ngIf="randomCharacter$ | async as person"

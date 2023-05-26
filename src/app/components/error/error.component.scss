@@ -1,0 +1,37 @@
+.error_title {
+  color: #fff;
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 128px;
+  text-align: center;
+}
+.error_bloc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.error_text {
+  width: 780px;
+  color: #fff;
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 82px;
+}
+.error_img {
+  animation-name: spin;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
