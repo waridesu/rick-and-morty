@@ -15,7 +15,7 @@ import { SafeHtml } from '@angular/platform-browser';
 })
 export class FooterComponent {
   githubIcon: Observable<SafeHtml> = this.iconService.getIcon(
-    './assets/github.svg',
+    '/assets/github.svg',
     'white'
   );
   constructor(public iconService: ReceivingAssetsIconService) {}
