@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, Renderer2 } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { EpisodeService } from "../../services/api/episode.service";
 import { Episode } from "../../interface/episodes";
 import { isCharacterArray } from "../../helpers/isCharacterArray";
 import { Character } from "../../interface/character";
 import { PlanetComponent } from "../planet/planet.component";
+import { BreakpointObserver, BreakpointState } from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-episode',
@@ -16,15 +17,36 @@ import { PlanetComponent } from "../planet/planet.component";
   templateUrl: './episode.component.html',
   styleUrls: ['./episode.component.scss']
 })
-export class EpisodeComponent {
+export class EpisodeComponent implements OnDestroy {
   randomEpisode$: Observable<Episode | null> = this.episodeSVC.getRandomEpisode()
   protected readonly isCharacterArray = isCharacterArray;
-  displayLimit  = 5;
+  displayLimit = 0;
+  private subscription: Subscription | undefined
 
-  constructor(private episodeSVC: EpisodeService, private renderer: Renderer2) {}
+  constructor(private episodeSVC: EpisodeService,
+              private renderer: Renderer2,
+              private breakpointObserver: BreakpointObserver,
+              private cdRef: ChangeDetectorRef) {
+    this.subscription = this.breakpointObserver
+      .observe(['(min-width: 768px)', '(min-width: 1200px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          if (state.breakpoints['(min-width: 768px)']) {
+            this.updateLimit(4);
+          }
+          if (state.breakpoints['(min-width: 1200px)']) {
+            this.updateLimit(2);
+          }
+        } else {
+          this.updateLimit(2);
+        }
+      });
+  }
+
   trackByFunction(index: number, item: Character): number {
     return item.id;
   }
+
   generateEpisode() {
     this.randomEpisode$ = this.episodeSVC.getRandomEpisode()
   }
@@ -40,6 +62,15 @@ export class EpisodeComponent {
   }
 
   showMore(characters: Character[]) {
-    this.displayLimit = characters.length
+    this.updateLimit(characters.length);
+  }
+
+  updateLimit(length: number) {
+    this.displayLimit = length
+    this.cdRef.detectChanges();
+  }
+
+  ngOnDestroy() {
+    this.subscription?.unsubscribe();
   }
 }

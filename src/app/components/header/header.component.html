@@ -5,15 +5,12 @@
         <a class="navbar-brand" routerLink="">
           <img
             ngSrc="./assets/logo-image.png"
+            priority="true"
             alt="rick-and-morty"
             class="logo-img"
             height="151"
-            width="557"
-          />
+            width="557"/>
         </a>
-        <!--      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>-->
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -59,7 +56,7 @@
               class="mob-nav-link"
               routerLink="/characters"
               (click)="toggleMenu()"
-              >Characters</a
+            >Characters</a
             >
           </li>
           <li class="mob-nav-item">
@@ -67,7 +64,7 @@
               class="mob-nav-link"
               routerLink="/locations"
               (click)="toggleMenu()"
-              >Locations</a
+            >Locations</a
             >
           </li>
           <li class="mob-nav-item">
@@ -75,7 +72,7 @@
               class="mob-nav-link"
               routerLink="/episodes"
               (click)="toggleMenu()"
-              >Episodes</a
+            >Episodes</a
             >
           </li>
           <li class="mob-nav-item">
@@ -83,7 +80,7 @@
               class="mob-nav-link"
               routerLink="/favorites"
               (click)="toggleMenu()"
-              >Favorite</a
+            >Favorite</a
             >
           </li>
           <li class="mob-nav-item">
@@ -91,7 +88,7 @@
               class="mob-nav-link"
               routerLink="/statistics"
               (click)="toggleMenu()"
-              >Statistics</a
+            >Statistics</a
             >
           </li>
         </ul>

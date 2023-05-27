@@ -6,6 +6,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from "@angular/common/http";
 import { RickPortalComponent } from "./components/rick-portal/rick-portal.component";
 import { LoaderService } from "./services/loader.service";
+import { LayoutModule } from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { LoaderService } from "./services/loader.service";
     FooterComponent,
     HttpClientModule,
     RickPortalComponent,
+    LayoutModule
   ],
 })
 export class AppComponent {
