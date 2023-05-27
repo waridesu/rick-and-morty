@@ -19,7 +19,7 @@
         </ul>
         <button type="button" class="episode-btn" (click)="addToFavorite(episode, $event)">add to favorite</button>
       </div>
-      <app-planet [bgImageUrl]="'./assets/sun.webp'" [width]="'250px'" class="episode-img"/>
+      <app-planet [bgImageUrl]="'./assets/sun.webp'" class="episode-img"/>
     </div>
 
     <div *ngIf="isCharacterArray(episode.characters)" class="character-wrap">

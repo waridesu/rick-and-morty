@@ -103,11 +103,11 @@
 
 .episode-img {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
 
   @media (max-width: 767px) {
-    top: -20px;
+    top: -30px;
     right: -40px;
   }
 

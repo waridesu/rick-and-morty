@@ -20,12 +20,6 @@ export class PlanetComponent {
     return this._bgImageUrl;
   }
 
-  @Input() width: string = '';
-  @HostBinding('style.--d')
-  get hostWidth() {
-    return this.width = this.width || '100%';
-  }
-
   @HostBinding('style.background')
   get hostBackground() {
     return this._bgImageUrl;
