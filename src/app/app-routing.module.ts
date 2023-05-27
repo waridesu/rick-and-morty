@@ -20,7 +20,8 @@ const routes: Routes = [
     path: 'episodes',
     loadComponent: () =>
       import('./components/episode/episode.component').then(
-        (m) => m.EpisodeComponent)
+        (m) => m.EpisodeComponent
+      ),
   },
   {
     path: 'favorites',
@@ -44,8 +45,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
