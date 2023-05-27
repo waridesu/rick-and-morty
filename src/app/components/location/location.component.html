@@ -1,11 +1,6 @@
 <section class="location" *ngIf="randomLocation$ | async as location">
   <div class="location__container">
-    <img ngSrc="./assets/planet.png" alt="planet" class="location__img" height="708" width="564"/>
-    <img
-      ngSrc="./assets/planet-location-mob.png"
-      alt="planet"
-      class="location__img--mob"
-      height="200" width="200"/>
+    <app-planet [bgImageUrl]="'./assets/fire-planet.webp'" class="location__planet-img"></app-planet>
     <div class="location__card-container">
       <div class="location__card">
           <div class="location-item">
@@ -54,7 +49,7 @@
     </div>
     <ng-template #hasNoResident>
       <div class="residents-wrap">
-        <p class="residents-title">No residents</p>
+        <p class="residents-title empty">No residents for this location</p>
       </div>
     </ng-template>
   </div>

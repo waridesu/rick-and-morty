@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { isCharacterArray } from '../../helpers/isCharacterArray';
 import { Character } from "../../interface/character";
 import { BreakpointObserver, BreakpointState } from "@angular/cdk/layout";
+import { PlanetComponent } from "../planet/planet.component";
 
 @Component({
   selector: 'app-location',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgOptimizedImage],
+  imports: [CommonModule, FormsModule, NgOptimizedImage, PlanetComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [LocationService],
   templateUrl: './location.component.html',
@@ -23,7 +24,12 @@ export class LocationComponent {
   displayLimit = 0;
   private subscription: Subscription | undefined
 
-  constructor(private locationSVC: LocationService, private renderer: Renderer2, private breakpointObserver: BreakpointObserver, private cdRef: ChangeDetectorRef) {
+  constructor(private locationSVC: LocationService,
+              private renderer: Renderer2,
+              private breakpointObserver: BreakpointObserver,
+              private cdRef: ChangeDetectorRef) {}
+
+  ngOnInit(): void {
     this.subscription = this.breakpointObserver
       .observe(['(min-width: 768px)'])
       .subscribe((state: BreakpointState) => {

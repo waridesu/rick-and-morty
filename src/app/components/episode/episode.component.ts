@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Observable, Subscription } from "rxjs";
 import { EpisodeService } from "../../services/api/episode.service";
@@ -17,7 +17,7 @@ import { BreakpointObserver, BreakpointState } from "@angular/cdk/layout";
   templateUrl: './episode.component.html',
   styleUrls: ['./episode.component.scss']
 })
-export class EpisodeComponent implements OnDestroy {
+export class EpisodeComponent implements OnInit, OnDestroy {
   randomEpisode$: Observable<Episode | null> = this.episodeSVC.getRandomEpisode()
   protected readonly isCharacterArray = isCharacterArray;
   displayLimit = 0;
@@ -26,7 +26,8 @@ export class EpisodeComponent implements OnDestroy {
   constructor(private episodeSVC: EpisodeService,
               private renderer: Renderer2,
               private breakpointObserver: BreakpointObserver,
-              private cdRef: ChangeDetectorRef) {
+              private cdRef: ChangeDetectorRef) {}
+  ngOnInit(): void {
     this.subscription = this.breakpointObserver
       .observe(['(min-width: 768px)', '(min-width: 1200px)'])
       .subscribe((state: BreakpointState) => {
@@ -42,7 +43,6 @@ export class EpisodeComponent implements OnDestroy {
         }
       });
   }
-
   trackByFunction(index: number, item: Character): number {
     return item.id;
   }
