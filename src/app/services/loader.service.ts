@@ -1,12 +1,12 @@
-import { Injectable, OnDestroy, signal } from '@angular/core';
-import { filter, Subject, takeUntil } from "rxjs";
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, distinctUntilChanged, filter, Subject, takeUntil } from "rxjs";
 import { NavigationStart, Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoaderService implements OnDestroy {
-  private _isLoading = signal(false);
+  private _isLoading = new BehaviorSubject<boolean>(false);
   private destroyed$ = new Subject();
 
   constructor(private router: Router) {
@@ -19,11 +19,11 @@ export class LoaderService implements OnDestroy {
   }
 
   set isLoading(value: boolean) {
-    this._isLoading.set(value);
+    this._isLoading.next(value);
   }
 
   get isLoading$() {
-    return this._isLoading;
+    return this._isLoading.asObservable().pipe(takeUntil(this.destroyed$), distinctUntilChanged());
   }
 
   ngOnDestroy() {

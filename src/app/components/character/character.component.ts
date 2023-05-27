@@ -5,11 +5,12 @@ import { RouterLink } from "@angular/router";
 import { Observable } from "rxjs";
 import { Character } from "../../interface/character";
 import { RickPortalComponent } from "../rick-portal/rick-portal.component";
+import { PlanetComponent } from "../planet/planet.component";
 
 @Component({
   selector: 'app-character',
   standalone: true,
-  imports: [CommonModule, RouterLink, RickPortalComponent, NgOptimizedImage],
+  imports: [CommonModule, RouterLink, RickPortalComponent, NgOptimizedImage, PlanetComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CharacterService],
   templateUrl: './character.component.html',

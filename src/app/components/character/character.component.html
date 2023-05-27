@@ -40,11 +40,7 @@
       </div>
       <button type="button" class="character-btn" (click)="addToFavorite(person, $event)">add to favorite</button>
     </div>
-    <img
-      ngSrc="./assets/planet-character.png"
-      alt="planet"
-      class="planet-img"
-      height="345" width="345"/>
+    <app-planet [bgImageUrl]="'./assets/venus.png'" class="planet-img"/>
   </div>
   <button
     type="button"

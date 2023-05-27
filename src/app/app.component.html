@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div class="application-content">
-  <app-rick-portal *ngIf="isLoader()"/>
+  <app-rick-portal *ngIf="isLoader | async"/>
   <router-outlet/>
 </div>
 

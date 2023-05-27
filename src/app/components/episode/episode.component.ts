@@ -5,11 +5,12 @@ import { EpisodeService } from "../../services/api/episode.service";
 import { Episode } from "../../interface/episodes";
 import { isCharacterArray } from "../../helpers/isCharacterArray";
 import { Character } from "../../interface/character";
+import { PlanetComponent } from "../planet/planet.component";
 
 @Component({
   selector: 'app-episode',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage],
+  imports: [CommonModule, NgOptimizedImage, PlanetComponent],
   providers: [EpisodeService],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './episode.component.html',
