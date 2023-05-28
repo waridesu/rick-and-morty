@@ -30,4 +30,9 @@ export class FavoriteComponent {
     this.characters = this.characters.filter(e => e.id !== character.id);
     localStorage.setItem('character', JSON.stringify(this.characters));
   }
+
+  removeLocation(location: cartoonLocation) {
+    this.locations = this.locations.filter(e => e.id !== location.id);
+    localStorage.setItem('location', JSON.stringify(this.characters));
+  }
 }

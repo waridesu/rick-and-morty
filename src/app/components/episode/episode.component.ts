@@ -29,14 +29,14 @@ export class EpisodeComponent implements OnInit, OnDestroy {
               private cdRef: ChangeDetectorRef) {}
   ngOnInit(): void {
     this.subscription = this.breakpointObserver
-      .observe(['(min-width: 768px)', '(min-width: 1200px)'])
+      .observe(['(max-width: 768px)', '(min-width: 768px)', '(min-width: 1200px)'])
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
           if (state.breakpoints['(min-width: 768px)']) {
             this.updateLimit(4);
           }
           if (state.breakpoints['(min-width: 1200px)']) {
-            this.updateLimit(2);
+            this.updateLimit(5);
           }
         } else {
           this.updateLimit(2);

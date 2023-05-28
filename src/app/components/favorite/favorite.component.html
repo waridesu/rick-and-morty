@@ -50,7 +50,7 @@
             <p class="location-text">{{ location.dimension }}</p>
           </li>
         </ul>
-        <button type="button" class="location-btn btn">
+        <button type="button" class="location-btn btn" (click)="removeLocation(location)">
           remove from favorite
         </button>
       </li>
