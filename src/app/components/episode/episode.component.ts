@@ -41,9 +41,10 @@ export class EpisodeComponent implements OnInit, OnDestroy {
             this.updateLimit(5);
             this.screenLimit = 5;
           }
-        } else {
-          this.updateLimit(2);
-          this.screenLimit = 2;
+          if (state.breakpoints['(max-width: 768px)']) {
+            this.updateLimit(2);
+            this.screenLimit = 2;
+          }
         }
       });
   }
@@ -53,6 +54,7 @@ export class EpisodeComponent implements OnInit, OnDestroy {
 
   generateEpisode() {
     this.randomEpisode$ = this.episodeSVC.getRandomEpisode()
+    console.log('gen');
     this.displayLimit = this.screenLimit;
   }
 

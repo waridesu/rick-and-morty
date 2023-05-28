@@ -195,6 +195,7 @@ $color-shadow-secondary: rgba(135, 245, 78, 0.5);
   &__resident-card {
     display: grid;
     grid-template-rows:repeat(6, auto);
+    margin: auto;
     width: 240px;
     border-radius: 28px;
     background-color: $color-secondary;

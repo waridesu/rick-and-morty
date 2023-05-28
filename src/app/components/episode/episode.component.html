@@ -23,14 +23,14 @@
     </div>
 
     <div *ngIf="isCharacterArray(episode.characters)" class="character-wrap">
-      <h3 class="character-title">Characters {{displayLimit}}</h3>
+      <h3 class="character-title">Characters</h3>
       <ul class="character-list">
         <li *ngFor="let char of episode.characters | slice: 0 : displayLimit; trackBy: trackByFunction" class="character-item">
           <img [src]="char.image" alt="character" class="character-img" />
           <p class="character-name">{{ char.name }}</p>
         </li>
       </ul>
-      <button class="generate-btn show-more" (click)="showMore(episode.characters)" *ngIf="displayLimit < episode.characters.length">Show More</button>
+      <button class="generate-btn show-more" (click)="showMore(episode.characters)" *ngIf="episode.characters && displayLimit < episode.characters.length">Show More</button>
     </div>
   </div>
 
