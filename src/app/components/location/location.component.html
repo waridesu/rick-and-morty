@@ -3,19 +3,20 @@
     <app-planet [bgImageUrl]="'./assets/fire-planet.webp'" class="location__planet-img"></app-planet>
     <div class="location__card-container">
       <div class="location__card">
-          <div class="location-item">
-            <p class="location__card-title">Planet:</p>
-            <p class="location__card-text">{{ location.name }}</p>
-          </div>
-          <div class="location-item">
-            <p class="location__card-title">Type:</p>
-            <p class="location__card-text">{{ location.type }}</p>
-          </div>
-          <div class="location-item">
-            <p class="location__card-title">Dimension:</p>
-            <p class="location__card-text">{{ location.dimension }}</p>
-          </div>
-        <button type="button" class="location__card-btn" (click)="addToFavorite(location, $event)">add to favorite</button>
+        <div class="location-item">
+          <p class="location__card-title">Planet:</p>
+          <p class="location__card-text">{{ location.name }}</p>
+        </div>
+        <div class="location-item">
+          <p class="location__card-title">Type:</p>
+          <p class="location__card-text">{{ location.type }}</p>
+        </div>
+        <div class="location-item">
+          <p class="location__card-title">Dimension:</p>
+          <p class="location__card-text">{{ location.dimension }}</p>
+        </div>
+        <button type="button" class="location__card-btn" (click)="addToFavorite(location, $event)">add to favorite
+        </button>
       </div>
       <button type="button" class="location__action-btn" (click)="generateLocation()">Teleport</button>
     </div>
@@ -27,24 +28,23 @@
       ">
       <p class="location__resident-cards-title">Residents</p>
       <ul class="location__residents-list">
-        <li *ngFor="let resident of location.residents | slice: 0 : displayLimit; trackBy: trackByFunction" class="location__resident-card">
-          <img [src]="resident.image" alt="resident" class="location__resident-card-img" />
-          <div class="location__resident-card-info">
-            <ul class="info-list">
-              <li class="info-item">
-                <p class="location__resident-card-info-title">Name:</p>
-                <p class="location__resident-card-info-text">{{ resident.name }}</p>
-              </li>
-              <li class="info-item">
-                <p class="location__resident-card-info-title">Status:</p>
-                <p class="location__resident-card-info-text">{{ resident.status }}</p>
-              </li>
-            </ul>
-            <button type="button" class="location__resident-btn" (click)="addToFavoriteResident(resident, $event)">add to favorite</button>
-          </div>
+        <li *ngFor="let resident of location.residents | slice: 0 : displayLimit; trackBy: trackByFunction"
+            class="location__resident-card">
+          <img [src]="resident.image" alt="resident" class="location__resident-card-img"/>
+          <p class="location__resident-card-title">Name:</p>
+          <p class="location__resident-card-text">{{ resident.name }}</p>
+          <p class="location__resident-card-title">Status:</p>
+          <p class="location__resident-card-text">{{ resident.status }}</p>
+          <button type="button" class="location__resident-btn" (click)="addToFavoriteResident(resident, $event)">
+            add to favorite
+          </button>
         </li>
       </ul>
-      <button class="location__action-btn show-more" (click)="showMore(location.residents)" *ngIf="displayLimit < location.residents.length">Show More</button>
+      <button class="location__action-btn show-more"
+              (click)="showMore(location.residents)"
+              *ngIf="displayLimit < location.residents.length">
+        Show More
+      </button>
 
     </div>
     <ng-template #hasNoResident>

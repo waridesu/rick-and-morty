@@ -22,12 +22,14 @@ export class LocationComponent {
   randomLocation$: Observable<cartoonLocation | null> = this.locationSVC.getRandomLocation()
   protected readonly isCharacterArray = isCharacterArray;
   displayLimit = 0;
+  screenLimit = 0;
   private subscription: Subscription | undefined
 
   constructor(private locationSVC: LocationService,
               private renderer: Renderer2,
               private breakpointObserver: BreakpointObserver,
-              private cdRef: ChangeDetectorRef) {}
+              private cdRef: ChangeDetectorRef) {
+  }
 
   ngOnInit(): void {
     this.subscription = this.breakpointObserver
@@ -36,9 +38,11 @@ export class LocationComponent {
         if (state.matches) {
           if (state.breakpoints['(min-width: 768px)']) {
             this.updateLimit(3);
+            this.screenLimit = 3;
           }
         } else {
           this.updateLimit(1);
+          this.screenLimit = 1;
         }
       });
   }
@@ -49,6 +53,7 @@ export class LocationComponent {
 
   generateLocation() {
     this.randomLocation$ = this.locationSVC.getRandomLocation()
+    this.displayLimit = this.screenLimit;
   }
 
   addToFavorite(location: cartoonLocation, event: Event) {

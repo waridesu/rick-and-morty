@@ -173,6 +173,9 @@ $color-shadow-secondary: rgba(135, 245, 78, 0.5);
   &__resident-btn {
     border: 1px solid $color-black;
     color: $color-black;
+    gap: 30px;
+    margin-top: auto;
+    margin-bottom: 16px;
   }
 
   &__residents-list {
@@ -190,9 +193,10 @@ $color-shadow-secondary: rgba(135, 245, 78, 0.5);
   }
 
   &__resident-card {
+    display: grid;
+    grid-template-rows:repeat(6, auto);
     width: 240px;
     border-radius: 28px;
-    margin: 0 auto 15px;
     background-color: $color-secondary;
     overflow: hidden;
     box-shadow: 0 0 20px 5px $color-shadow-secondary;
@@ -203,39 +207,33 @@ $color-shadow-secondary: rgba(135, 245, 78, 0.5);
       transform: scale(1.1);
     }
 
+    & > :nth-child(5) {
+      margin-bottom: 40px;
+    }
+
     @media (min-width: 768px) {
-      margin: 0;
       width: 215px;
     }
 
     &-img {
-      width: 240px;
-      height: 210px;
-      @media (min-width: 768px) {
-        width: 215px;
-        height: 190px;
-      }
+      align-self: start;
+      object-fit: contain;
+      margin-bottom: 16px;
     }
 
-    &-info {
-      min-height: 200px;
-      display: flex;
-      flex-grow: 1;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 16px;
-
-      &-title, &-text {
-        font-size: $font-size-medium;
-        color: $color-black;
-      }
-
-      &-title {
-        @media (min-width: 768px) {
-          font-size: $font-size-large;
-        }
-      }
+    &-title, &-text {
+      color: $color-black;
+      padding-inline: 16px;
     }
+
+    &-text {
+      font-size: $font-size-medium;
+    }
+
+    &-title {
+      font-size: $font-size-large;
+    }
+
   }
 
   &__resident-cards {

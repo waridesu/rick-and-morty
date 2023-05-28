@@ -21,6 +21,7 @@ export class EpisodeComponent implements OnInit, OnDestroy {
   randomEpisode$: Observable<Episode | null> = this.episodeSVC.getRandomEpisode()
   protected readonly isCharacterArray = isCharacterArray;
   displayLimit = 0;
+  screenLimit= 0;
   private subscription: Subscription | undefined
 
   constructor(private episodeSVC: EpisodeService,
@@ -34,12 +35,15 @@ export class EpisodeComponent implements OnInit, OnDestroy {
         if (state.matches) {
           if (state.breakpoints['(min-width: 768px)']) {
             this.updateLimit(4);
+            this.screenLimit = 4;
           }
           if (state.breakpoints['(min-width: 1200px)']) {
             this.updateLimit(5);
+            this.screenLimit = 5;
           }
         } else {
           this.updateLimit(2);
+          this.screenLimit = 2;
         }
       });
   }
@@ -49,6 +53,7 @@ export class EpisodeComponent implements OnInit, OnDestroy {
 
   generateEpisode() {
     this.randomEpisode$ = this.episodeSVC.getRandomEpisode()
+    this.displayLimit = this.screenLimit;
   }
 
   addToFavorite(episode: Episode, event: Event) {
