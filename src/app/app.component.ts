@@ -8,6 +8,7 @@ import { RickPortalComponent } from "./components/rick-portal/rick-portal.compon
 import { LoaderService } from "./services/loader.service";
 import { LayoutModule } from "@angular/cdk/layout";
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

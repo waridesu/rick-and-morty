@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Renderer2 } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { CharacterService } from '../../services/api/character.service';
 import { RouterLink } from "@angular/router";
@@ -6,7 +6,6 @@ import { Observable } from "rxjs";
 import { Character } from "../../interface/character";
 import { RickPortalComponent } from "../rick-portal/rick-portal.component";
 import { PlanetComponent } from "../planet/planet.component";
-
 @Component({
   selector: 'app-character',
   standalone: true,
@@ -17,9 +16,11 @@ import { PlanetComponent } from "../planet/planet.component";
   styleUrls: ['./character.component.scss'],
 })
 export class CharacterComponent {
+  characterSvc = inject(CharacterService);
+  renderer = inject(Renderer2);
+
   randomCharacter$: Observable<Character | null> = this.characterSvc.getRandomCharacter();
 
-  constructor(private characterSvc: CharacterService, private renderer: Renderer2) {}
 
   generateCharacter(): void{
     this.randomCharacter$ = this.characterSvc.getRandomCharacter();
